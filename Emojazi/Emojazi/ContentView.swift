@@ -12,21 +12,19 @@ struct ContentView: View {
     
     
     let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
-                                    
+    
     var body: some View {
         
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: columns,
-                          alignment: .leading,
-                          pinnedViews: [.sectionHeaders]) {
+                LazyVGrid(columns: columns, pinnedViews: [.sectionHeaders]) {
                     ForEach(emojis) { emoji in
                         VStack {
                             
                             Text(emoji.char)
                                 .font(.system(size: 100))
                                 .frame(maxWidth: .infinity)
-
+                            
                             Text(emoji.codes)
                                 .font(.title)
                                 .multilineTextAlignment(.center)
@@ -41,8 +39,7 @@ struct ContentView: View {
                         
                     }
                 }
-                
-                          .padding(.horizontal)
+                .padding(.horizontal)
                 
             }
             .navigationTitle("Emojazi")
@@ -52,9 +49,7 @@ struct ContentView: View {
     }
     
     func emojizify() {
-        let emojis = decodeJSON(filename: "emoji", as: Emojis.self)
-        self.emojis = emojis
-        //        print(emojis.count)
+        emojis = decodeJSON(filename: "emoji", as: Emojis.self)
     }
 }
 

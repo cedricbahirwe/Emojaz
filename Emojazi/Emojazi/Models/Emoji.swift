@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias Emojis = [Emoji]
+
 // MARK: - Emoji
 struct Emoji: Codable, Identifiable {
     let codes, char, name, category: String
@@ -28,5 +30,3 @@ enum EmojiGroup: String, Codable {
     case symbols = "Symbols"
     case travelPlaces = "Travel & Places"
 }
-
-typealias Emojis = [Emoji]
