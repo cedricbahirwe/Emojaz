@@ -22,9 +22,22 @@ struct EmojisHomeView: View {
         NavigationView {
             ZStack {
                 ScrollView {
+                    if displayMode == .list {
+                        VStack {
+                            ForEach(emojiSections) { section in
+                                EmojisListView(columns: columns, section: section)
+                            }
+                        }
+                        .padding(.horizontal)
+                    } else {
+                        LazyVStack(pinnedViews: [.sectionHeaders]) {
+                            ForEach(emojiSections) { section in
+                                EmojisGridView(columns: columns, section: section)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
                     LazyVStack(pinnedViews: [.sectionHeaders]) {
-                        
-
                         ForEach(emojiSections) { section in
                             if displayMode == .list {
                                 EmojisListView(columns: columns, section: section)
@@ -52,7 +65,6 @@ struct EmojisHomeView: View {
             .onAppear(perform: emojify)
             .navigationTitle("Emojazi")
             .toolbar {
-
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: switchDisplayMode) {
                         Label("Diplay Mode", systemImage: displayMode == .list ? "grid.circle" : "list.bullet.rectangle")
@@ -63,11 +75,11 @@ struct EmojisHomeView: View {
                         Label("App Info", systemImage: "info.circle")
                     }
                 }
-
             }
-
         }
     }
+
+
     private func emojify() {
         emojis = decodeJSON(filename: "emoji", as: Emojis.self)
         emojiSections = sectionizeEmojis(emojis)

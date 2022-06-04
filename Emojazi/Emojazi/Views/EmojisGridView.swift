@@ -13,29 +13,9 @@ struct EmojisGridView: View {
 
     var body: some View {
         Section {
-            LazyVGrid(columns: columns) {
-                ForEach(section.values) { emoji in
-                    NavigationLink(destination: {
-                        EmojiDetailView(emoji: emoji)
-                    }) {
-                        Text(emoji.char)
-                            .font(.system(size: 75))
-                            .foregroundStyle(.secondary)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.thinMaterial)
-                            .cornerRadius(20)
-                            .minimumScaleFactor(0.8)
-                    }
-                }
-            }
+            EmojiGridSectionView(columns: columns, section: section)
         } header: {
-            Text(section.key.rawValue.capitalized)
-                .font(.system(.title, design: .rounded))
-                .fontWeight(.semibold)
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(.background)
+            EmojisSectionHeader(section.key.rawValue)
         }
         .id(section.key)
     }

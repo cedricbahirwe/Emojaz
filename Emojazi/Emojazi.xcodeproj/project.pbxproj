@@ -25,6 +25,8 @@
 		CB56D1DB284BB8D30023D76F /* EmojaziLocalKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1DA284BB8D30023D76F /* EmojaziLocalKeys.swift */; };
 		CB56D1DD284BD6960023D76F /* EmojisHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1DC284BD6960023D76F /* EmojisHomeView.swift */; };
 		CB56D1DF284BD7430023D76F /* EmojisGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1DE284BD7430023D76F /* EmojisGridView.swift */; };
+		CB56D1E3284BDCE40023D76F /* EmojiGridSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1E2284BDCE40023D76F /* EmojiGridSectionView.swift */; };
+		CB56D1E7284BDE0C0023D76F /* EmojisSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1E6284BDE0C0023D76F /* EmojisSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		CB56D1DA284BB8D30023D76F /* EmojaziLocalKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojaziLocalKeys.swift; sourceTree = "<group>"; };
 		CB56D1DC284BD6960023D76F /* EmojisHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisHomeView.swift; sourceTree = "<group>"; };
 		CB56D1DE284BD7430023D76F /* EmojisGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisGridView.swift; sourceTree = "<group>"; };
+		CB56D1E2284BDCE40023D76F /* EmojiGridSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiGridSectionView.swift; sourceTree = "<group>"; };
+		CB56D1E6284BDE0C0023D76F /* EmojisSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisSectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,8 @@
 			children = (
 				CB56D1DC284BD6960023D76F /* EmojisHomeView.swift */,
 				CB56D1D1284BB0370023D76F /* EmojisListView.swift */,
+				CB56D1E2284BDCE40023D76F /* EmojiGridSectionView.swift */,
+				CB56D1E6284BDE0C0023D76F /* EmojisSectionHeader.swift */,
 				CB56D1DE284BD7430023D76F /* EmojisGridView.swift */,
 				CB56D1D3284BB03C0023D76F /* EmojiDetailView.swift */,
 				CB56D1D7284BB87A0023D76F /* EmojaziWelcomeView.swift */,
@@ -332,7 +338,9 @@
 				CB56D1D8284BB87A0023D76F /* EmojaziWelcomeView.swift in Sources */,
 				CB56D1D2284BB0370023D76F /* EmojisListView.swift in Sources */,
 				CB3D3CE4278EEFB00048FCD4 /* Emoji.swift in Sources */,
+				CB56D1E7284BDE0C0023D76F /* EmojisSectionHeader.swift in Sources */,
 				CB56D1D4284BB03C0023D76F /* EmojiDetailView.swift in Sources */,
+				CB56D1E3284BDCE40023D76F /* EmojiGridSectionView.swift in Sources */,
 				CB3D3CB5278ECBF10048FCD4 /* EmojaziApp.swift in Sources */,
 				CB56D1D6284BB0DA0023D76F /* EmojiPreview.swift in Sources */,
 				CB56D1DD284BD6960023D76F /* EmojisHomeView.swift in Sources */,
