@@ -7,18 +7,27 @@
 
 import Foundation
 
-typealias Emojis = [Emoji]
+public typealias Emojis = [Emoji]
 
 // MARK: - Emoji
-struct Emoji: Codable, Identifiable {
-    let codes, char, name, category: String
-    let group: EmojiGroup
-    let subgroup: String
-    
-    var id: String { codes + name }
+public struct Emoji: Codable, Identifiable {
+    public init(codes: String, char: String, name: String, category: String, group: EmojiGroup, subgroup: String) {
+        self.codes = codes
+        self.char = char
+        self.name = name
+        self.category = category
+        self.group = group
+        self.subgroup = subgroup
+    }
+
+    public let codes, char, name, category: String
+    public let group: EmojiGroup
+    public let subgroup: String
+    public var id: String { codes + name }
 }
 
-enum EmojiGroup: String, Codable {
+// MARK: - EmojiGroup
+public enum EmojiGroup: String, Codable {
     case activities = "Activities"
     case animalsNature = "Animals & Nature"
     case component = "Component"

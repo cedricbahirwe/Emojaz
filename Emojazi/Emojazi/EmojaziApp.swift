@@ -11,7 +11,7 @@ import SwiftUI
 struct EmojaziApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EmojisListView()
         }
     }
 }
