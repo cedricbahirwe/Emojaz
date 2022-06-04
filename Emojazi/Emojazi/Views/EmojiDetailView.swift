@@ -15,6 +15,7 @@ struct EmojiDetailView: View {
         GeometryReader { geo in
             VStack {
                 Text(emoji.char)
+                    .foregroundColor(.accentColor)
                     .font(.system(size: 250))
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: geo.frame(in: .global).size.height*0.55)

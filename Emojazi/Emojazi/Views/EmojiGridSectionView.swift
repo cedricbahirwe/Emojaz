@@ -18,7 +18,7 @@ struct EmojiGridSectionView: View {
                 }) {
                     Text(emoji.char)
                         .font(.system(size: 75))
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.accentColor)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(.thinMaterial)
