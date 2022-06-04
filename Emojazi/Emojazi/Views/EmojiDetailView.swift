@@ -9,12 +9,14 @@ import SwiftUI
 
 struct EmojiDetailView: View {
     let emoji: Emoji
-    
+    @State private var isEmojiCopied = false
+
     var body: some View {
         GeometryReader { geo in
             VStack {
                 Text(emoji.char)
                     .font(.system(size: 250))
+                    .drawingGroup()
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: geo.frame(in: .global).size.height*0.55)
                     .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .top)
@@ -47,12 +49,24 @@ struct EmojiDetailView: View {
                 .padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
+
+                Button(action: copyEmojiToClipBoard) {
+                    Label("Copy Emoji", systemImage: "doc.on.doc")
+                        .font(.system(.callout, design: .monospaced).weight(.semibold))
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal)
+                        .background(isEmojiCopied ? Color.green: Color.accentColor)
+                        .cornerRadius(8)
+                }
+                .padding()
+
             }
         }
         .ignoresSafeArea()
     }
 
-    func hStack(_ key: String, _ value: String) -> some View {
+    private func hStack(_ key: String, _ value: String) -> some View {
         HStack(alignment: .top, spacing: 4) {
             Text("\(key):")
                 .fontWeight(.medium)
@@ -60,10 +74,16 @@ struct EmojiDetailView: View {
         }
         .font(.system(.headline, design: .rounded))
     }
+
+    private func copyEmojiToClipBoard() {
+        UIPasteboard.general.string = emoji.char
+        isEmojiCopied = true
+    }
 }
 
 struct EmojiDetailView_Previews: PreviewProvider {
     static var previews: some View {
         EmojiDetailView(emoji: Emoji.preview)
+            .preferredColorScheme(.dark)
     }
 }

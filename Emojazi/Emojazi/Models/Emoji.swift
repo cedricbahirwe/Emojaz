@@ -27,7 +27,7 @@ public struct Emoji: Codable, Identifiable {
 }
 
 // MARK: - EmojiGroup
-public enum EmojiGroup: String, Codable {
+public enum EmojiGroup: String, CaseIterable, Codable {
     case activities = "Activities"
     case animalsNature = "Animals & Nature"
     case component = "Component"
@@ -38,4 +38,19 @@ public enum EmojiGroup: String, Codable {
     case smileysEmotion = "Smileys & Emotion"
     case symbols = "Symbols"
     case travelPlaces = "Travel & Places"
+    
+    func next() -> Self {
+        let all = Self.allCases
+        let idx = all.firstIndex(of: self)!
+        let next = all.index(after: idx)
+        return all[next == all.endIndex ? all.startIndex : next]
+    }
+}
+
+
+// MARK: - EmojiGroup
+struct EmojiSection: Identifiable {
+    var id: String { key.rawValue }
+    let key: EmojiGroup
+    var values: [Emoji]
 }

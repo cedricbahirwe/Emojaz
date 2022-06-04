@@ -9,41 +9,49 @@ import SwiftUI
 
 struct EmojisListView: View {
     @State private var emojis: Emojis = []
+    @State private var emojiSections: [EmojiSection] = []
     @AppStorage(EmojaziLocalKeys.showWelcomeView)
     private var showWelcomeView: Bool = true
-
-    let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
+    private let columns: [GridItem] = Array(repeating: GridItem(.flexible()),
+                                            count: 3)
+    @State private var nextSection: EmojiGroup = EmojiGroup.allCases[0]
 
     var body: some View {
         NavigationView {
             ZStack {
                 ScrollView {
-                    LazyVGrid(columns: columns, pinnedViews: [.sectionHeaders]) {
-                        ForEach(emojis) { emoji in
-                            NavigationLink(destination: {
-                                EmojiDetailView(emoji: emoji)
-                            }) {
-                                VStack {
-                                    Text(emoji.char)
-                                        .font(.system(size: 100))
-                                        .frame(maxWidth: .infinity)
-
-                                    Text(emoji.codes)
-                                        .font(.title)
-                                        .multilineTextAlignment(.center)
-
+                    LazyVStack(pinnedViews: [.sectionHeaders]) {
+                        ForEach(emojiSections) { section in
+                            Section {
+                                LazyVGrid(columns: columns) {
+                                    ForEach(section.values) { emoji in
+                                        NavigationLink(destination: {
+                                            EmojiDetailView(emoji: emoji)
+                                        }) {
+                                            Text(emoji.char)
+                                                .font(.system(size: 75))
+                                                .foregroundStyle(.secondary)
+                                                .padding()
+                                                .frame(maxWidth: .infinity)
+                                                .background(.thinMaterial)
+                                                .cornerRadius(20)
+                                                .minimumScaleFactor(0.8)
+                                        }
+                                    }
                                 }
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .frame(minHeight: 180)
-                                .background(.thinMaterial)
-                                .cornerRadius(20)
-                                .foregroundStyle(.secondary)
+                            } header: {
+                                Text(section.key.rawValue.capitalized)
+                                    .font(.system(.title, design: .rounded))
+                                    .fontWeight(.semibold)
+                                    .padding()
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .background(.background)
                             }
-
+                            .id(section.key)
                         }
                     }
                     .padding(.horizontal)
+
                 }
 
                 if showWelcomeView {
@@ -77,12 +85,30 @@ struct EmojisListView: View {
 
     private func emojify() {
         emojis = decodeJSON(filename: "emoji", as: Emojis.self)
+        emojiSections = sectionizeEmojis(emojis)
+        print(emojiSections.map { ($0.key, $0.values.count) })
+        print(emojiSections.map(\.key))
+        print(EmojiGroup.allCases)
+    }
+
+    private func sectionizeEmojis(_ emojis: Emojis) -> [EmojiSection] {
+        var sections = [EmojiSection]()
+        for group  in EmojiGroup.allCases {
+            var section = EmojiSection(key: group, values: [])
+            for emoji in emojis {
+                if emoji.group == group {
+                    section.values.append(emoji)
+                }
+            }
+            sections.append(section)
+        }
+        return sections
     }
 }
 
 struct EmojisListView_Previews: PreviewProvider {
     static var previews: some View {
         EmojisListView()
-//                    .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }
