@@ -21,7 +21,8 @@ struct EmojiDetailView: View {
                     .frame(maxHeight: geo.frame(in: .global).size.height*0.55)
                     .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .top)
                     .overlay(
-                        Text(emoji.codes)
+                        Text("CODE: "+emoji.codes)
+                            .foregroundColor(.accentColor)
                             .padding(10)
                             .background(.background)
                             .cornerRadius(8)
@@ -60,7 +61,6 @@ struct EmojiDetailView: View {
                         .cornerRadius(8)
                 }
                 .padding()
-
             }
         }
         .ignoresSafeArea()
@@ -81,9 +81,11 @@ struct EmojiDetailView: View {
     }
 }
 
+#if DEBUG
 struct EmojiDetailView_Previews: PreviewProvider {
     static var previews: some View {
         EmojiDetailView(emoji: Emoji.preview)
             .preferredColorScheme(.dark)
     }
 }
+#endif

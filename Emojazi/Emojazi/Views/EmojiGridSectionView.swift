@@ -30,9 +30,11 @@ struct EmojiGridSectionView: View {
     }
 }
 
+#if DEBUG
 struct EmojiGridSectionView_Previews: PreviewProvider {
     static var previews: some View {
         EmojiGridSectionView(columns: GridItem.emojisPreview,
                              section: .preview)
     }
 }
+#endif

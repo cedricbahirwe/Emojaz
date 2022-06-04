@@ -49,8 +49,8 @@ public enum EmojiGroup: String, CaseIterable, Codable {
 
 
 // MARK: - EmojiGroup
-struct EmojiSection: Identifiable {
-    var id: String { key.rawValue }
-    let key: EmojiGroup
-    var values: [Emoji]
+public struct EmojiSection: Identifiable {
+    public var id: String { key.rawValue }
+    public let key: EmojiGroup
+    public var values: [Emoji]
 }

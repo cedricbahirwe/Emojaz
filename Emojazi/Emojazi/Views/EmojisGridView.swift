@@ -21,8 +21,10 @@ struct EmojisGridView: View {
     }
 }
 
+#if DEBUG
 struct EmojisGridView_Previews: PreviewProvider {
     static var previews: some View {
         EmojisGridView(columns: GridItem.emojisPreview, section: .preview)
     }
 }
+#endif

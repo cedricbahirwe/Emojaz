@@ -20,6 +20,7 @@ struct EmojisListView: View {
     }
 }
 
+#if DEBUG
 struct EmojisListView_Previews: PreviewProvider {
     static var previews: some View {
         EmojisListView(columns: GridItem.emojisPreview,
@@ -27,3 +28,4 @@ struct EmojisListView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
+#endif
