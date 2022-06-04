@@ -16,7 +16,6 @@ struct EmojiDetailView: View {
             VStack {
                 Text(emoji.char)
                     .font(.system(size: 250))
-                    .drawingGroup()
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: geo.frame(in: .global).size.height*0.55)
                     .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .top)
@@ -51,7 +50,7 @@ struct EmojiDetailView: View {
 
 
                 Button(action: copyEmojiToClipBoard) {
-                    Label("Copy Emoji", systemImage: "doc.on.doc")
+                    Label("\(isEmojiCopied ? "Copied" : "Copy") Emoji", systemImage: "doc.on.doc")
                         .font(.system(.callout, design: .monospaced).weight(.semibold))
                         .foregroundColor(.white)
                         .padding(.vertical, 10)

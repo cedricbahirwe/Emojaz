@@ -1,5 +1,5 @@
 //
-//  EmojisListView.swift
+//  EmojisGridView.swift
 //  Emojazi
 //
 //  Created by Cédric Bahirwe on 04/06/2022.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct EmojisListView: View {
+struct EmojisGridView: View {
     let columns: [GridItem]
     var section: EmojiSection
 
     var body: some View {
-        DisclosureGroup {
+        Section {
             LazyVGrid(columns: columns) {
                 ForEach(section.values) { emoji in
                     NavigationLink(destination: {
@@ -29,7 +29,7 @@ struct EmojisListView: View {
                     }
                 }
             }
-        } label: {
+        } header: {
             Text(section.key.rawValue.capitalized)
                 .font(.system(.title, design: .rounded))
                 .fontWeight(.semibold)
@@ -37,12 +37,12 @@ struct EmojisListView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.background)
         }
+        .id(section.key)
     }
 }
 
-struct EmojisListView_Previews: PreviewProvider {
+struct EmojisGridView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojisListView(columns: GridItem.emojisPreview, section: .preview)
-            .preferredColorScheme(.dark)
+        EmojisGridView(columns: GridItem.emojisPreview, section: .preview)
     }
 }
