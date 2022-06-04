@@ -46,7 +46,7 @@ struct EmojisHomeView: View {
                 }
 
                 EmojaziWelcomeView()
-                    .offset(y: showWelcomeView ? 0 : -800)
+                    .offset(y: showWelcomeView ? -50 : -800)
                     .opacity(showWelcomeView ? 1 : 0)
                     .animation(.spring(), value: showWelcomeView)
             }
