@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmojisSectionHeader: View {
+    var isIPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
     let title: String
     init(_ title: String) {
         self.title = title
@@ -18,7 +19,7 @@ struct EmojisSectionHeader: View {
             .fontWeight(.semibold)
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.background)
+            .background(isIPhone ? Color(.systemBackground) : .clear)
     }
 }
 

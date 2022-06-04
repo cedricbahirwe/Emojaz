@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct EmojisHomeView: View {
-    @State private var emojis: Emojis = []
     @State private var emojiSections: [EmojiSection] = []
     @AppStorage(EmojaziLocalKeys.showWelcomeView)
     private var showWelcomeView: Bool = true
-    private let columns: [GridItem] = Array(repeating: GridItem(.flexible()),
-                                            count: 3)
+    @State private var columns: [GridItem] = []
     @State private var nextSection: EmojiGroup = EmojiGroup.allCases[0]
-
     @State private var displayMode = DisplayMode.grid
 
     var body: some View {
@@ -37,16 +34,6 @@ struct EmojisHomeView: View {
                         }
                         .padding(.horizontal)
                     }
-                    LazyVStack(pinnedViews: [.sectionHeaders]) {
-                        ForEach(emojiSections) { section in
-                            if displayMode == .list {
-                                EmojisListView(columns: columns, section: section)
-                            } else {
-                                EmojisGridView(columns: columns, section: section)
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
                 }
 
                 if showWelcomeView {
@@ -60,6 +47,7 @@ struct EmojisHomeView: View {
 
                 EmojaziWelcomeView()
                     .offset(y: showWelcomeView ? 0 : -800)
+                    .opacity(showWelcomeView ? 1 : 0)
                     .animation(.spring(), value: showWelcomeView)
             }
             .onAppear(perform: emojify)
@@ -77,11 +65,20 @@ struct EmojisHomeView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
 
     private func emojify() {
-        emojis = decodeJSON(filename: "emoji", as: Emojis.self)
+        guard emojiSections.isEmpty else { return }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            columns = Array(repeating: GridItem(.flexible()),
+                            count: 6)
+        } else {
+            columns = Array(repeating: GridItem(.flexible()),
+                                                    count: 3)
+        }
+        let emojis = decodeJSON(filename: "emoji", as: Emojis.self)
         emojiSections = sectionizeEmojis(emojis)
     }
 

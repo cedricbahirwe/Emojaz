@@ -13,7 +13,7 @@ struct EmojisListView: View {
 
     var body: some View {
         DisclosureGroup {
-            EmojisGridView(columns: columns, section: section)
+            EmojiGridSectionView(columns: columns, section: section)
         } label: {
             EmojisSectionHeader(section.key.rawValue)
         }
