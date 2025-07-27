@@ -30,7 +30,6 @@ struct EmojiGridSectionView: View {
 //                    Text(getEmoji(emoji.codes) ?? "-")
                         .font(.system(size: 75))
                         .font(.system(.largeTitle))
-                        .foregroundColor(.accentColor)
                         .padding()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .aspectRatio(1, contentMode: .fill)

@@ -9,15 +9,16 @@ import SwiftUI
 
 struct EmojiDetailView: View {
     let emoji: Emoji
+    let maxRotation: Double = 10
+
     @State private var isEmojiCopied = false
     @State private var blurred = false
-
     @State private var angle: Double = 0                // For auto animation
     @State private var dragOffset = CGSize.zero         // For user drag input
     @State private var isDragging = false               // Track drag state
     @State private var timer: Timer?                    // Control auto animation
 
-    let maxRotation: Double = 10
+    @EnvironmentObject private var viewModel: EmojiViewModel
 
     var dominantColor: Color {
         guard let uiColor = emojiToImage(emoji.char)?.dominantColor() else {
@@ -26,27 +27,23 @@ struct EmojiDetailView: View {
         return Color(uiColor: uiColor)
     }
 
+
     var body: some View {
         let rotationX = isDragging ? Double(-dragOffset.height / 10).clamped(to: -maxRotation...maxRotation) : sin(angle) * maxRotation
         let rotationY = isDragging ? Double(dragOffset.width / 10).clamped(to: -maxRotation...maxRotation) : cos(angle) * maxRotation
 
-
         GeometryReader { geo in
             VStack {
                 Text(emoji.char)
-                    .foregroundColor(.accentColor)
                     .font(.system(size: 280))
                     .scaleEffect(blurred ? 1 : 1.1)
                     .blur(radius: blurred ? 20 : 0)
-
-                    .overlay(content: {
+                    .overlay {
                         Text(emoji.char)
-                            .foregroundColor(.accentColor)
                             .font(.system(size: 260))
                             .blur(radius: blurred ? 0 : 30)
                             .scaleEffect(blurred ? 1 : 0.6)
-                    })
-
+                    }
                     .rotation3DEffect(.degrees(rotationX), axis: (x: 1, y: 0, z: 0))
                     .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
                     .frame(maxWidth: .infinity)
@@ -67,12 +64,11 @@ struct EmojiDetailView: View {
                                 startTimer()
                             }
                     )
-//                    .shadow(radius: 10)
                     .overlay(
                         Text("CODE: "+emoji.codes)
                             .foregroundStyle(dominantColor)
-                            .fontWeight(.medium)
                             .saturation(6)
+                            .fontWeight(.medium)
                             .padding(12)
                             .background(.ultraThinMaterial)
                             .cornerRadius(8)
@@ -105,7 +101,8 @@ struct EmojiDetailView: View {
                 Button(action: copyEmojiToClipBoard) {
                     Label("\(isEmojiCopied ? "Copied" : "Copy") Emoji", systemImage: isEmojiCopied ? "checkmark" : "doc.on.doc")
                         .font(.system(.callout, design: .monospaced).weight(.semibold))
-                        .foregroundColor(dominantColor)
+                        .foregroundStyle(dominantColor)
+                        .saturation(6)
                         .padding(.vertical, 10)
                         .padding(.horizontal)
 
@@ -113,20 +110,21 @@ struct EmojiDetailView: View {
                         .cornerRadius(8)
                 }
                 .padding()
+
+//                NavigationLink("View Testing") {
+//                    TestingView(emoji: emoji)
+//                }
             }
         }
         .ignoresSafeArea()
-        .onAppear() {
+        .onAppear {
             withAnimation(.easeInOut(duration: 1)) {
                 blurred = true
+            } completion: {
+                startTimer()
             }
-
-            startTimer()
-//            Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { _ in
-//                angle += 0.04
-//            }
         }
-        .onDisappear() {
+        .onDisappear {
             stopTimer()
         }
     }
@@ -157,7 +155,7 @@ struct EmojiDetailView: View {
         isEmojiCopied = true
     }
 
-    func emojiToImage(_ emoji: String, size: CGFloat = 64) -> UIImage? {
+    private func emojiToImage(_ emoji: String, size: CGFloat = 64) -> UIImage? {
         let label = UILabel()
         label.text = emoji
         label.font = UIFont.systemFont(ofSize: size)
@@ -175,48 +173,112 @@ struct EmojiDetailView: View {
 
 }
 
-extension UIImage {
-    func dominantColor() -> UIColor? {
-        guard let cgImage = self.cgImage else { return nil }
-        let width = 1
-        let height = 1
-
-        let bitmapData = calloc(width * height * 4, MemoryLayout<UInt8>.size)
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let context = CGContext(data: bitmapData,
-                                width: width,
-                                height: height,
-                                bitsPerComponent: 8,
-                                bytesPerRow: width * 4,
-                                space: colorSpace,
-                                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
-
-        context?.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-
-        guard let data = context?.data else { return nil }
-        let ptr = data.bindMemory(to: UInt8.self, capacity: 4)
-
-        let r = CGFloat(ptr[0]) / 255.0
-        let g = CGFloat(ptr[1]) / 255.0
-        let b = CGFloat(ptr[2]) / 255.0
-        let a = CGFloat(ptr[3]) / 255.0
-
-        free(bitmapData)
-        return UIColor(red: r, green: g, blue: b, alpha: a)
-    }
-}
-
 
 #if DEBUG
-struct EmojiDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-//        EmojiDetailView(emoji: Emoji.preview)
-        EmojiDetailView(emoji: EmojiSection.preview.values[0])
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    @Previewable @StateObject var viewModel = EmojiViewModel()
+//    EmojiDetailView(emoji: EmojiSection.preview.values[1])
+    TestingView(emoji: EmojiSection.preview.values[1])
+        .environmentObject(viewModel)
+        .onAppear() {
+            viewModel.loadData()
+        }
 }
 #endif
 
+struct TestingView: View {
+    @EnvironmentObject private var viewModel: EmojiViewModel
+    let emoji: Emoji
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            if let item = viewModel.getEmojiNetInfo(for: emoji) {
+                if let emojiString = emoji(from: item.unicode) {
+                    Text(emojiString)
+                        .font(.system(size: 200))
+                        .frame(maxWidth: .infinity)
+                        .background(.red)
+
+                }
+
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        Text("Name: \(item.name)")
+
+                        Text("Unicode: \(item.unicode)")
+
+                        // Complete all the other properties
+                        Text("Definition: \(item.definition)")
+
+                        Text("Category: \(String(describing: item.category))")
+
+                        Text("Keywords: \(item.keywords.joined(separator: ", "))")
+
+                        Text("ShortCode: \(String(describing: item.shortcode))")
+
+
+                        VStack(alignment: .leading) {
+                            Text("Senses: ").font(.title2.bold())
+                            if let adjectiveSenses = item.senses.adjectives {
+                                makeSenseSection(adjectiveSenses, title: "Adjectives")
+                            }
+
+                            if let nounsSenses = item.senses.nouns {
+                                makeSenseSection(nounsSenses, title: "Nouns")
+                            }
+
+                            if let verbsSenses = item.senses.verbs {
+                                makeSenseSection(verbsSenses, title: "Verbs")
+                            }
+                        }
+                    }
+                    .padding()
+                }
+            } else {
+                Text("Nothing for \(emoji.codes)")
+            }
+        }
+    }
+
+    @ViewBuilder
+    func makeSenseSection(_ items: [SenseItem], title: String) -> some View {
+        ForEach(items) { sense in
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.title3.bold())
+                Group {
+                    ForEach(sense.definitions, id: \.self) { definition in
+                        Text("- " + definition)
+                    }
+
+                }
+                .padding(.leading, 10)
+            }
+            .padding(.leading, 8)
+        }
+    }
+
+    func getEmoji(_ hexString: String) -> String? {
+        guard let codePoint = UInt32(hexString, radix: 16),
+              let scalar = UnicodeScalar(codePoint) else {
+            return nil
+        }
+        return String(scalar)
+    }
+
+    func emoji(from unicodeString: String) -> String? {
+        // Step 1: Remove "U+" prefix
+        let hexString = unicodeString.replacingOccurrences(of: "U+", with: "")
+
+        // Step 2: Convert to UInt32
+        guard let codePoint = UInt32(hexString, radix: 16),
+              let scalar = UnicodeScalar(codePoint) else {
+            return nil
+        }
+
+        // Step 3: Convert to emoji
+        return String(scalar)
+    }
+}
 
 extension Comparable {
     func clamped(to limits: ClosedRange<Self>) -> Self {

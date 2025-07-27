@@ -13,7 +13,7 @@ struct EmojaziWelcomeView: View {
     
     var body: some View {
         VStack {
-            Text("Welcome to \(Text("**Emojazi**").foregroundColor(.accentColor)) ")
+            Text("Welcome to \(Text("**Emojazi**").foregroundStyle(.tint)) ")
                 .font(.system(.title2, design: .rounded))
                 .fontWeight(.medium)
 
@@ -25,9 +25,9 @@ struct EmojaziWelcomeView: View {
                 Text("What is a emoji?")
                     .font(.system(.headline, design: .rounded))
 
-                Text("An \(Text("**emoji**").foregroundColor(.accentColor)) is a pictogram, logogram or smiley embedded in text and used in electronic messages and web pages. The primary function of emoji is to fill in emotional cues otherwise missing from typed conversation. Some examples of emoji are ❤️, 🌍, 😂, 🧘🏻‍♂️,  🌦️, 🍞, 🚗, 📞, 🎉,  🏁, among many others.)")
+                Text("An \(Text("**emoji**").foregroundStyle(.tint)) is a pictogram, logogram or smiley embedded in text and used in electronic messages and web pages. The primary function of emoji is to fill in emotional cues otherwise missing from typed conversation. Some examples of emoji are ❤️, 🌍, 😂, 🧘🏻‍♂️,  🌦️, 🍞, 🚗, 📞, 🎉,  🏁, among many others.)")
                     .textSelection(.enabled)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
                     .minimumScaleFactor(0.8)
 
             }

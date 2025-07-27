@@ -12,6 +12,10 @@ struct EmojiNet {
     init(_ values: [EmojiNetItem] = []) {
         self.values = values
     }
+
+    func itemByUnicode(_ unicode: String) -> EmojiNetItem? {
+        values.first { $0.unicode == "U+"+unicode }
+    }
 }
 
 extension EmojiNet: Collection {
@@ -50,7 +54,7 @@ struct Senses: Codable {
     let nouns: [SenseItem]?
 }
 
-struct SenseItem: Codable {
+struct SenseItem: Identifiable, Codable {
     let id: String
     let definitions: [String]
 

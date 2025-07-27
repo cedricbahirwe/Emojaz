@@ -1,5 +1,5 @@
 //
-//  EmojiHomeViewModel.swift
+//  EmojiViewModel.swift
 //  Emojazi
 //
 //  Created by Cédric Bahirwe on 27/07/2025.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class EmojiHomeViewModel: ObservableObject {
+@MainActor final class EmojiViewModel: ObservableObject {
     @Published private(set) var emojiSections: [EmojiSection] = []
     @Published private(set) var emojiNet = EmojiNet()
     @Published private(set) var columns: [GridItem] = []
@@ -31,12 +31,12 @@ final class EmojiHomeViewModel: ObservableObject {
     }
 
     private func loadEmojiNet(){
-        let startDate = Date()
-        print("starting at \(startDate)")
-        let emojis = decodeJSON(filename: "emojis", as: [EmojiNetItem].self)
-        let endDate = Date()
-        emojiNet = EmojiNet(emojis)
-        print("finished at \(endDate), elapsed time: \(endDate.timeIntervalSince(startDate)) seconds")
+//        let startDate = Date()
+//        print("starting at \(startDate)")
+//        let emojis = decodeJSON(filename: "emojis", as: [EmojiNetItem].self)
+//        let endDate = Date()
+//        emojiNet = EmojiNet(emojis)
+//        print("finished at \(endDate), elapsed time: \(endDate.timeIntervalSince(startDate)) seconds")
     }
 
     private func sectionizeEmojis(_ emojis: Emojis) -> [EmojiSection] {
@@ -44,5 +44,10 @@ final class EmojiHomeViewModel: ObservableObject {
             let groupEmojis = emojis.filter { $0.group == group }
             return EmojiSection(key: group, values: groupEmojis)
         }
+    }
+
+
+    func getEmojiNetInfo(for emoji: Emoji) -> EmojiNetItem? {
+        emojiNet.itemByUnicode(emoji.codes)
     }
 }

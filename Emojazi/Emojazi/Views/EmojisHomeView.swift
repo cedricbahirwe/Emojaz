@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EmojisHomeView: View {
-    @StateObject private var viewModel: EmojiHomeViewModel = .init()
+    @StateObject private var viewModel: EmojiViewModel = .init()
     @AppStorage(EmojaziLocalKeys.showWelcomeView)
     private var showWelcomeView: Bool = true
     @State private var nextSection: EmojiGroup = EmojiGroup.allCases[0]
@@ -49,11 +49,9 @@ struct EmojisHomeView: View {
                     .opacity(showWelcomeView ? 1 : 0)
                     .animation(.spring(), value: showWelcomeView)
             }
-            .onAppear(perform: viewModel.loadData)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(
-                "Emojazi \(viewModel.emojiSections.map(\.values).flatMap({ $0 }).count) and \(viewModel.emojiNet.count)"
-            )
+            .task { viewModel.loadData() }
+//            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Emojazi")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: switchDisplayMode) {
@@ -67,6 +65,7 @@ struct EmojisHomeView: View {
                 }
             }
         }
+        .environmentObject(viewModel)
     }
 
     private func switchDisplayMode() {
