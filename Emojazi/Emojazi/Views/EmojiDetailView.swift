@@ -11,6 +11,14 @@ struct EmojiDetailView: View {
     let emoji: Emoji
     @State private var isEmojiCopied = false
     @State private var blurred = false
+
+    @State private var angle: Double = 0                // For auto animation
+    @State private var dragOffset = CGSize.zero         // For user drag input
+    @State private var isDragging = false               // Track drag state
+    @State private var timer: Timer?                    // Control auto animation
+
+    let maxRotation: Double = 10
+
     var dominantColor: Color {
         guard let uiColor = emojiToImage(emoji.char)?.dominantColor() else {
             return Color(uiColor: .label)
@@ -19,24 +27,47 @@ struct EmojiDetailView: View {
     }
 
     var body: some View {
+        let rotationX = isDragging ? Double(-dragOffset.height / 10).clamped(to: -maxRotation...maxRotation) : sin(angle) * maxRotation
+        let rotationY = isDragging ? Double(dragOffset.width / 10).clamped(to: -maxRotation...maxRotation) : cos(angle) * maxRotation
+
+
         GeometryReader { geo in
             VStack {
                 Text(emoji.char)
                     .foregroundColor(.accentColor)
                     .font(.system(size: 280))
                     .scaleEffect(blurred ? 1 : 1.1)
-                    .blur(radius: blurred ? 30 : 0)
-                    .frame(maxWidth: .infinity)
-                    .frame(maxHeight: geo.frame(in: .global).size.height*0.55)
-                    .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .top)
+                    .blur(radius: blurred ? 20 : 0)
+
                     .overlay(content: {
                         Text(emoji.char)
                             .foregroundColor(.accentColor)
                             .font(.system(size: 260))
                             .blur(radius: blurred ? 0 : 30)
                             .scaleEffect(blurred ? 1 : 0.6)
-
                     })
+
+                    .rotation3DEffect(.degrees(rotationX), axis: (x: 1, y: 0, z: 0))
+                    .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
+                    .frame(maxWidth: .infinity)
+                    .frame(maxHeight: geo.frame(in: .global).size.height*0.55)
+                    .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .top)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                stopTimer()
+                                dragOffset = value.translation
+                                isDragging = true
+                            }
+                            .onEnded { _ in
+                                withAnimation(.spring()) {
+                                    dragOffset = .zero
+                                    isDragging = false
+                                }
+                                startTimer()
+                            }
+                    )
+//                    .shadow(radius: 10)
                     .overlay(
                         Text("CODE: "+emoji.codes)
                             .foregroundStyle(dominantColor)
@@ -50,15 +81,15 @@ struct EmojiDetailView: View {
                     )
 
                 Text(emoji.name.capitalized)
-                    .font(.system(.title, design: .rounded))
-                    .fontWeight(.medium)
+                    .font(.system(.title, design: .rounded, weight: .medium))
+                    .foregroundStyle(dominantColor.gradient)
+                    .saturation(3)
                     .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.75)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(.ultraThinMaterial)
-                    .foregroundStyle(dominantColor.gradient)
-                    .saturation(3)
-                    .minimumScaleFactor(0.75)
+
 
                 VStack(alignment: .leading, spacing: 6) {
                     hStack("Category", emoji.category)
@@ -89,7 +120,27 @@ struct EmojiDetailView: View {
             withAnimation(.easeInOut(duration: 1)) {
                 blurred = true
             }
+
+            startTimer()
+//            Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { _ in
+//                angle += 0.04
+//            }
         }
+        .onDisappear() {
+            stopTimer()
+        }
+    }
+
+    private func  startTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { _ in
+            angle += 0.03
+        }
+    }
+
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 
     private func hStack(_ key: String, _ value: String) -> some View {
@@ -165,3 +216,10 @@ struct EmojiDetailView_Previews: PreviewProvider {
     }
 }
 #endif
+
+
+extension Comparable {
+    func clamped(to limits: ClosedRange<Self>) -> Self {
+        return min(max(self, limits.lowerBound), limits.upperBound)
+    }
+}
