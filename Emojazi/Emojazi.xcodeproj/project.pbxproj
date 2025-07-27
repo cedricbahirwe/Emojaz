@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3C3EF92E3688BA00EEFB13 /* emojis.json in Resources */ = {isa = PBXBuildFile; fileRef = CB3C3EF82E3688BA00EEFB13 /* emojis.json */; };
+		CB3C3EFC2E368FC700EEFB13 /* EmojiHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3EFB2E368FC700EEFB13 /* EmojiHomeViewModel.swift */; };
+		CB3C3EFE2E369CE600EEFB13 /* EmojiNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */; };
+		CB3C3EFF2E369CE600EEFB13 /* EmojiNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */; };
 		CB3D3CB5278ECBF10048FCD4 /* EmojaziApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CB4278ECBF10048FCD4 /* EmojaziApp.swift */; };
 		CB3D3CB9278ECBF30048FCD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3D3CB8278ECBF30048FCD4 /* Assets.xcassets */; };
 		CB3D3CBC278ECBF30048FCD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3D3CBB278ECBF30048FCD4 /* Preview Assets.xcassets */; };
@@ -47,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB3C3EF82E3688BA00EEFB13 /* emojis.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emojis.json; sourceTree = "<group>"; };
+		CB3C3EFB2E368FC700EEFB13 /* EmojiHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiHomeViewModel.swift; sourceTree = "<group>"; };
+		CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiNet.swift; sourceTree = "<group>"; };
 		CB3D3CB1278ECBF10048FCD4 /* Emojazi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojazi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3D3CB4278ECBF10048FCD4 /* EmojaziApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojaziApp.swift; sourceTree = "<group>"; };
 		CB3D3CB8278ECBF30048FCD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB3C3EFA2E368FC000EEFB13 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CB3C3EFB2E368FC700EEFB13 /* EmojiHomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CB3D3CA8278ECBF10048FCD4 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +136,7 @@
 			children = (
 				CB56D1E8284BE4FC0023D76F /* Emojazi.entitlements */,
 				CB3D3CB4278ECBF10048FCD4 /* EmojaziApp.swift */,
+				CB3C3EFA2E368FC000EEFB13 /* ViewModels */,
 				CB56D1D0284BB01A0023D76F /* Views */,
 				CB3D3CE5278EF2650048FCD4 /* Helpers */,
 				CB3D3CE1278EEF960048FCD4 /* Models */,
@@ -161,6 +177,7 @@
 		CB3D3CDE278EEF7D0048FCD4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CB3C3EF82E3688BA00EEFB13 /* emojis.json */,
 				CB3D3CDF278EEF900048FCD4 /* emoji.json */,
 			);
 			path = Resources;
@@ -170,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				CB3D3CE3278EEFB00048FCD4 /* Emoji.swift */,
+				CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,6 +328,7 @@
 			files = (
 				CB3D3CBC278ECBF30048FCD4 /* Preview Assets.xcassets in Resources */,
 				CB3D3CE0278EEF900048FCD4 /* emoji.json in Resources */,
+				CB3C3EF92E3688BA00EEFB13 /* emojis.json in Resources */,
 				CB3D3CB9278ECBF30048FCD4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB3D3CE7278EF2710048FCD4 /* JSONDecoder.swift in Sources */,
+				CB3C3EFC2E368FC700EEFB13 /* EmojiHomeViewModel.swift in Sources */,
 				CB56D1DF284BD7430023D76F /* EmojisGridView.swift in Sources */,
 				CB56D1D8284BB87A0023D76F /* EmojaziWelcomeView.swift in Sources */,
 				CB56D1D2284BB0370023D76F /* EmojisListView.swift in Sources */,
@@ -346,6 +366,7 @@
 				CB3D3CB5278ECBF10048FCD4 /* EmojaziApp.swift in Sources */,
 				CB56D1D6284BB0DA0023D76F /* EmojiPreview.swift in Sources */,
 				CB56D1DD284BD6960023D76F /* EmojisHomeView.swift in Sources */,
+				CB3C3EFE2E369CE600EEFB13 /* EmojiNet.swift in Sources */,
 				CB56D1DB284BB8D30023D76F /* EmojaziLocalKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3C3EFF2E369CE600EEFB13 /* EmojiNet.swift in Sources */,
 				CB3D3CEA278F00670048FCD4 /* Emoji.swift in Sources */,
 				CB3D3CE8278EFC020048FCD4 /* JSONDecoder.swift in Sources */,
 				CB3D3CC6278ECBF30048FCD4 /* EmojaziTests.swift in Sources */,
@@ -521,11 +543,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cedricbahirwe.Emojazi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -555,11 +579,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cedricbahirwe.Emojazi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

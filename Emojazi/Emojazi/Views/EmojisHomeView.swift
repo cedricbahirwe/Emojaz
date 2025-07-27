@@ -8,28 +8,27 @@
 import SwiftUI
 
 struct EmojisHomeView: View {
-    @State private var emojiSections: [EmojiSection] = []
+    @StateObject private var viewModel: EmojiHomeViewModel = .init()
     @AppStorage(EmojaziLocalKeys.showWelcomeView)
     private var showWelcomeView: Bool = true
-    @State private var columns: [GridItem] = []
     @State private var nextSection: EmojiGroup = EmojiGroup.allCases[0]
     @State private var displayMode = DisplayMode.grid
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 ScrollView {
                     if displayMode == .list {
                         VStack {
-                            ForEach(emojiSections) { section in
-                                EmojisListView(columns: columns, section: section)
+                            ForEach(viewModel.emojiSections) { section in
+                                EmojisListView(columns: viewModel.columns, section: section)
                             }
                         }
                         .padding(.horizontal)
                     } else {
                         LazyVStack(pinnedViews: [.sectionHeaders]) {
-                            ForEach(emojiSections) { section in
-                                EmojisGridView(columns: columns, section: section)
+                            ForEach(viewModel.emojiSections) { section in
+                                EmojisGridView(columns: viewModel.columns, section: section)
                             }
                         }
                         .padding(.horizontal)
@@ -50,8 +49,11 @@ struct EmojisHomeView: View {
                     .opacity(showWelcomeView ? 1 : 0)
                     .animation(.spring(), value: showWelcomeView)
             }
-            .onAppear(perform: emojify)
-            .navigationTitle("Emojazi")
+            .onAppear(perform: viewModel.loadData)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(
+                "Emojazi \(viewModel.emojiSections.map(\.values).flatMap({ $0 }).count) and \(viewModel.emojiNet.count)"
+            )
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: switchDisplayMode) {
@@ -65,21 +67,6 @@ struct EmojisHomeView: View {
                 }
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-
-
-    private func emojify() {
-        guard emojiSections.isEmpty else { return }
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            columns = Array(repeating: GridItem(.flexible()),
-                            count: 6)
-        } else {
-            columns = Array(repeating: GridItem(.flexible()),
-                                                    count: 3)
-        }
-        let emojis = decodeJSON(filename: "emoji", as: Emojis.self)
-        emojiSections = sectionizeEmojis(emojis)
     }
 
     private func switchDisplayMode() {
@@ -87,21 +74,6 @@ struct EmojisHomeView: View {
             displayMode.toggle()
         }
     }
-
-    private func sectionizeEmojis(_ emojis: Emojis) -> [EmojiSection] {
-        var sections = [EmojiSection]()
-        for group  in EmojiGroup.allCases {
-            var section = EmojiSection(key: group, values: [])
-            for emoji in emojis {
-                if emoji.group == group {
-                    section.values.append(emoji)
-                }
-            }
-            sections.append(section)
-        }
-        return sections
-    }
-
 }
 
 struct EmojisHomeView_Previews: PreviewProvider {
