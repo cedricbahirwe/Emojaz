@@ -27,8 +27,7 @@ struct EmojiGridSectionView: View {
                     EmojiDetailView(emoji: emoji)
                 }) {
                     Text(emoji.char)
-//                    Text(getEmoji(emoji.codes) ?? "-")
-                        .font(.system(size: 75))
+                        .font(.system(size: UIDevice.isPad ? 150 : 75))
                         .font(.system(.largeTitle))
                         .padding()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

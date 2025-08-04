@@ -19,6 +19,11 @@ struct EmojiDetailView: View {
     @State private var timer: Timer?                    // Control auto animation
 
     @EnvironmentObject private var viewModel: EmojiViewModel
+    private let isPad = UIDevice.isPad
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    var isPhoneLandscape: Bool {
+        !isPad && verticalSizeClass == .compact
+    }
 
     var dominantColor: Color {
         guard let uiColor = emojiToImage(emoji.char)?.dominantColor() else {
@@ -27,93 +32,17 @@ struct EmojiDetailView: View {
         return Color(uiColor: uiColor)
     }
 
-
     var body: some View {
-        let rotationX = isDragging ? Double(-dragOffset.height / 10).clamped(to: -maxRotation...maxRotation) : sin(angle) * maxRotation
-        let rotationY = isDragging ? Double(dragOffset.width / 10).clamped(to: -maxRotation...maxRotation) : cos(angle) * maxRotation
-
         GeometryReader { geo in
-            VStack {
-                Text(emoji.char)
-                    .font(.system(size: 280))
-                    .scaleEffect(blurred ? 1 : 1.1)
-                    .blur(radius: blurred ? 20 : 0)
-                    .overlay {
-                        Text(emoji.char)
-                            .font(.system(size: 260))
-                            .blur(radius: blurred ? 0 : 30)
-                            .scaleEffect(blurred ? 1 : 0.6)
+            VStack(spacing: 0) {
+                headerView(geo: geo)
+                if isPhoneLandscape {
+                    ScrollView {
+                        contentView
                     }
-                    .rotation3DEffect(.degrees(rotationX), axis: (x: 1, y: 0, z: 0))
-                    .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
-                    .frame(maxWidth: .infinity)
-                    .frame(maxHeight: geo.frame(in: .global).size.height*0.55)
-                    .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .top)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                stopTimer()
-                                dragOffset = value.translation
-                                isDragging = true
-                            }
-                            .onEnded { _ in
-                                withAnimation(.spring()) {
-                                    dragOffset = .zero
-                                    isDragging = false
-                                }
-                                startTimer()
-                            }
-                    )
-                    .overlay(
-                        Text("CODE: "+emoji.codes)
-                            .foregroundStyle(dominantColor)
-                            .saturation(6)
-                            .fontWeight(.medium)
-                            .padding(12)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(8)
-                            .padding(10)
-                        , alignment: .bottomTrailing
-                    )
-
-                Text(emoji.name.capitalized)
-                    .font(.system(.title, design: .rounded, weight: .medium))
-                    .foregroundStyle(dominantColor.gradient)
-                    .saturation(3)
-                    .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.75)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(.ultraThinMaterial)
-
-
-                VStack(alignment: .leading, spacing: 6) {
-                    hStack("Category", emoji.category)
-
-                    hStack("Group", emoji.group.rawValue)
-
-                    hStack("Subgroup", emoji.subgroup)
+                } else  {
+                    contentView
                 }
-                .padding(.horizontal)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-
-                Button(action: copyEmojiToClipBoard) {
-                    Label("\(isEmojiCopied ? "Copied" : "Copy") Emoji", systemImage: isEmojiCopied ? "checkmark" : "doc.on.doc")
-                        .font(.system(.callout, design: .monospaced).weight(.semibold))
-                        .foregroundStyle(dominantColor)
-                        .saturation(6)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-
-                        .background(isEmojiCopied ? Color.green.opacity(0.3): Color.accentColor)
-                        .cornerRadius(8)
-                }
-                .padding()
-
-//                NavigationLink("View Testing") {
-//                    TestingView(emoji: emoji)
-//                }
             }
         }
         .ignoresSafeArea()
@@ -127,6 +56,93 @@ struct EmojiDetailView: View {
         .onDisappear {
             stopTimer()
         }
+    }
+
+    @ViewBuilder
+    func headerView(geo: GeometryProxy) -> some View {
+        let rotationX = isDragging ? Double(-dragOffset.height / 10).clamped(to: -maxRotation...maxRotation) : sin(angle) * maxRotation
+        let rotationY = isDragging ? Double(dragOffset.width / 10).clamped(to: -maxRotation...maxRotation) : cos(angle) * maxRotation
+
+        Text(emoji.char)
+            .font(.system(size: isPhoneLandscape ? 180 : 280))
+            .scaleEffect(blurred ? 1 : 1.1)
+            .blur(radius: blurred ? 20 : 0)
+            .overlay {
+                Text(emoji.char)
+                    .font(.system(size: isPhoneLandscape ? 160 : 260))
+                    .blur(radius: blurred ? 0 : 30)
+                    .scaleEffect(blurred ? 1 : 0.6)
+            }
+            .rotation3DEffect(.degrees(rotationX), axis: (x: 1, y: 0, z: 0))
+            .rotation3DEffect(.degrees(rotationY), axis: (x: 0, y: 1, z: 0))
+            .frame(maxWidth: .infinity)
+            .frame(maxHeight: geo.frame(in: .global).size.height*(isPhoneLandscape ? 0.5 : 0.55))
+            .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .top)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        stopTimer()
+                        dragOffset = value.translation
+                        isDragging = true
+                    }
+                    .onEnded { _ in
+                        withAnimation(.spring()) {
+                            dragOffset = .zero
+                            isDragging = false
+                        }
+                        startTimer()
+                    }
+            )
+            .overlay(
+                Text("U+\(emoji.codes)")
+                    .font(.system(isPad ? .title : .body, design: .monospaced))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(dominantColor)
+                    .saturation(6)
+                    .padding(isPad ? 16 : 12)
+                    .background(.thinMaterial)
+                    .cornerRadius(isPad ? 16 : 8)
+                    .padding(isPad ? 16 : 10)
+                , alignment: .bottomTrailing
+            )
+    }
+
+    @ViewBuilder
+    var contentView: some View {
+        Text(emoji.name.capitalized)
+            .font(.system(isPad ? .largeTitle : .title, design: .rounded, weight: .medium))
+            .foregroundStyle(dominantColor.gradient)
+            .saturation(3)
+            .multilineTextAlignment(.center)
+            .minimumScaleFactor(0.75)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(.ultraThinMaterial)
+
+        VStack(alignment: .leading, spacing: 6) {
+            hStack("Category", emoji.category)
+
+            hStack("Group", emoji.group.rawValue)
+
+            hStack("Subgroup", emoji.subgroup)
+        }
+        .padding(.horizontal)
+        .frame(maxWidth: .infinity, alignment: .leading)
+
+
+        Button(action: copyEmojiToClipBoard) {
+            Label("\(isEmojiCopied ? "Copied" : "Copy") Emoji", systemImage: isEmojiCopied ? "checkmark" : "doc.on.doc")
+                .font(.system(isPad ? .title3 : .callout, design: .monospaced).weight(.semibold))
+                .foregroundStyle(dominantColor)
+                .saturation(6)
+                .padding(.vertical, 10)
+                .padding(.horizontal)
+                .background(isEmojiCopied ? Color.green.opacity(0.3): Color.accentColor)
+                .cornerRadius(8)
+        }
+        .padding()
+        .padding(.top)
+
     }
 
     private func  startTimer() {
@@ -147,7 +163,8 @@ struct EmojiDetailView: View {
                 .fontWeight(.medium)
             Text(value.capitalized)
         }
-        .font(.system(.headline, design: .rounded))
+        .font(.system(isPad ? .title : .body, design: .rounded))
+
     }
 
     private func copyEmojiToClipBoard() {
@@ -177,12 +194,12 @@ struct EmojiDetailView: View {
 #if DEBUG
 #Preview {
     @Previewable @StateObject var viewModel = EmojiViewModel()
-//    EmojiDetailView(emoji: EmojiSection.preview.values[1])
-    TestingView(emoji: EmojiSection.preview.values[1])
-        .environmentObject(viewModel)
-        .onAppear() {
-            viewModel.loadData()
-        }
+    EmojiDetailView(emoji: EmojiSection.preview.values[1])
+    //    TestingView(emoji: EmojiSection.preview.values[1])
+    //        .environmentObject(viewModel)
+    //        .onAppear() {
+    //            viewModel.loadData()
+    //        }
 }
 #endif
 
@@ -204,7 +221,7 @@ struct TestingView: View {
                     VStack(alignment: .leading) {
                         Text("Name: \(item.name)")
 
-                        Text("Unicode: \(item.unicode)")
+                        Text("Unicode: U+\(item.unicode)")
 
                         // Complete all the other properties
                         Text("Definition: \(item.definition)")

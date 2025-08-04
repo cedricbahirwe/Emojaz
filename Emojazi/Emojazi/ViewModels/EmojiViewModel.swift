@@ -21,7 +21,7 @@ import SwiftUI
     private func loadEmojis() {
         guard emojiSections.isEmpty else { return }
 
-        let columnsCount = UIDevice.current.userInterfaceIdiom == .pad ? 6 : 3
+        let columnsCount = UIDevice.current.userInterfaceIdiom == .pad ? 4 : 3
         columns = Array(
             repeating: GridItem(.flexible(), spacing: 8),
             count: columnsCount

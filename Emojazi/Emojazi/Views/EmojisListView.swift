@@ -15,7 +15,7 @@ struct EmojisListView: View {
         DisclosureGroup {
             EmojiGridSectionView(columns: columns, section: section)
         } label: {
-            EmojisSectionHeader(section.key.rawValue)
+            EmojisSectionHeader(section.key.rawValue, isInGrid: false )
         }
     }
 }
@@ -25,7 +25,7 @@ struct EmojisListView_Previews: PreviewProvider {
     static var previews: some View {
         EmojisListView(columns: GridItem.emojisPreview,
                        section: .preview)
-            .preferredColorScheme(.dark)
+        .previewLayout(.sizeThatFits)
     }
 }
 #endif

@@ -15,7 +15,7 @@ struct EmojisGridView: View {
         Section {
             EmojiGridSectionView(columns: columns, section: section)
         } header: {
-            EmojisSectionHeader(section.key.rawValue)
+            EmojisSectionHeader(section.key.rawValue, isInGrid: true)
         }
         .id(section.key)
     }

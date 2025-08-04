@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct EmojisSectionHeader: View {
-    var isPhone: Bool { UIDevice.current.userInterfaceIdiom == .phone }
+    var isPhone: Bool { !UIDevice.isPad }
     let title: String
-    init(_ title: String) {
+    let isInGrid: Bool
+
+    init(_ title: String, isInGrid: Bool) {
         self.title = title
+        self.isInGrid = isInGrid
     }
+
     var body: some View {
         Text(title.capitalized)
-            .font(.system(.title, design: .rounded))
+            .font(.system(.title, design: .rounded, weight: .semibold))
             .fontWeight(.semibold)
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(isPhone ? Color(.quaternarySystemFill) : .clear)
+            .background(isInGrid ? Color(.quaternarySystemFill) : .clear)
+            .foregroundStyle(.blue.gradient)
     }
 }
 
 struct EmojisSectionHeader_Previews: PreviewProvider {
     static var previews: some View {
-        EmojisSectionHeader("🎉")
+        EmojisSectionHeader("🎉 This is fun", isInGrid: true)
     }
 }

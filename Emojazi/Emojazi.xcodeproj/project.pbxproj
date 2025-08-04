@@ -23,6 +23,8 @@
 		CB3D3CE7278EF2710048FCD4 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */; };
 		CB3D3CE8278EFC020048FCD4 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */; };
 		CB3D3CEA278F00670048FCD4 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CE3278EEFB00048FCD4 /* Emoji.swift */; };
+		CB52A5382E40B1F6000F0D49 /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */; };
+		CB52A5392E40B1F6000F0D49 /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */; };
 		CB56D1D2284BB0370023D76F /* EmojisListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1D1284BB0370023D76F /* EmojisListView.swift */; };
 		CB56D1D4284BB03C0023D76F /* EmojiDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1D3284BB03C0023D76F /* EmojiDetailView.swift */; };
 		CB56D1D6284BB0DA0023D76F /* EmojiPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1D5284BB0DA0023D76F /* EmojiPreview.swift */; };
@@ -67,6 +69,7 @@
 		CB3D3CDF278EEF900048FCD4 /* emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emoji.json; sourceTree = "<group>"; };
 		CB3D3CE3278EEFB00048FCD4 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
 		CB56D1D1284BB0370023D76F /* EmojisListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListView.swift; sourceTree = "<group>"; };
 		CB56D1D3284BB03C0023D76F /* EmojiDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDetailView.swift; sourceTree = "<group>"; };
 		CB56D1D5284BB0DA0023D76F /* EmojiPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPreview.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 			children = (
 				CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */,
 				CB3C3F002E36B0D500EEFB13 /* ImageExtension.swift */,
+				CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -367,6 +371,7 @@
 				CB56D1D6284BB0DA0023D76F /* EmojiPreview.swift in Sources */,
 				CB56D1DD284BD6960023D76F /* EmojisHomeView.swift in Sources */,
 				CB3C3EFE2E369CE600EEFB13 /* EmojiNet.swift in Sources */,
+				CB52A5382E40B1F6000F0D49 /* DeviceExtension.swift in Sources */,
 				CB3C3F022E36B0D500EEFB13 /* ImageExtension.swift in Sources */,
 				CB56D1DB284BB8D30023D76F /* EmojaziLocalKeys.swift in Sources */,
 			);
@@ -379,6 +384,7 @@
 				CB3C3EFF2E369CE600EEFB13 /* EmojiNet.swift in Sources */,
 				CB3D3CEA278F00670048FCD4 /* Emoji.swift in Sources */,
 				CB3D3CE8278EFC020048FCD4 /* JSONDecoder.swift in Sources */,
+				CB52A5392E40B1F6000F0D49 /* DeviceExtension.swift in Sources */,
 				CB3C3F012E36B0D500EEFB13 /* ImageExtension.swift in Sources */,
 				CB3D3CC6278ECBF30048FCD4 /* EmojaziTests.swift in Sources */,
 			);
