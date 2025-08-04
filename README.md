@@ -4,4 +4,4 @@
 
 Learn about Emojis in a fun way
 
--- Need to be worked one, An experiment turned into an app
+-- From idea to appstore in 1 day
