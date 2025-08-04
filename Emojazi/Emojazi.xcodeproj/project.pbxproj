@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3C3EFC2E368FC700EEFB13 /* EmojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3EFB2E368FC700EEFB13 /* EmojiViewModel.swift */; };
+		CB3C3EFE2E369CE600EEFB13 /* EmojiNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */; };
+		CB3C3EFF2E369CE600EEFB13 /* EmojiNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */; };
+		CB3C3F012E36B0D500EEFB13 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3F002E36B0D500EEFB13 /* ImageExtension.swift */; };
+		CB3C3F022E36B0D500EEFB13 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C3F002E36B0D500EEFB13 /* ImageExtension.swift */; };
 		CB3D3CB5278ECBF10048FCD4 /* EmojaziApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CB4278ECBF10048FCD4 /* EmojaziApp.swift */; };
 		CB3D3CB9278ECBF30048FCD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3D3CB8278ECBF30048FCD4 /* Assets.xcassets */; };
 		CB3D3CBC278ECBF30048FCD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3D3CBB278ECBF30048FCD4 /* Preview Assets.xcassets */; };
@@ -18,6 +23,8 @@
 		CB3D3CE7278EF2710048FCD4 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */; };
 		CB3D3CE8278EFC020048FCD4 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */; };
 		CB3D3CEA278F00670048FCD4 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D3CE3278EEFB00048FCD4 /* Emoji.swift */; };
+		CB52A5382E40B1F6000F0D49 /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */; };
+		CB52A5392E40B1F6000F0D49 /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */; };
 		CB56D1D2284BB0370023D76F /* EmojisListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1D1284BB0370023D76F /* EmojisListView.swift */; };
 		CB56D1D4284BB03C0023D76F /* EmojiDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1D3284BB03C0023D76F /* EmojiDetailView.swift */; };
 		CB56D1D6284BB0DA0023D76F /* EmojiPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56D1D5284BB0DA0023D76F /* EmojiPreview.swift */; };
@@ -47,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB3C3EFB2E368FC700EEFB13 /* EmojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModel.swift; sourceTree = "<group>"; };
+		CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiNet.swift; sourceTree = "<group>"; };
+		CB3C3F002E36B0D500EEFB13 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		CB3D3CB1278ECBF10048FCD4 /* Emojazi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojazi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3D3CB4278ECBF10048FCD4 /* EmojaziApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojaziApp.swift; sourceTree = "<group>"; };
 		CB3D3CB8278ECBF30048FCD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +69,7 @@
 		CB3D3CDF278EEF900048FCD4 /* emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emoji.json; sourceTree = "<group>"; };
 		CB3D3CE3278EEFB00048FCD4 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
 		CB56D1D1284BB0370023D76F /* EmojisListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListView.swift; sourceTree = "<group>"; };
 		CB56D1D3284BB03C0023D76F /* EmojiDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDetailView.swift; sourceTree = "<group>"; };
 		CB56D1D5284BB0DA0023D76F /* EmojiPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPreview.swift; sourceTree = "<group>"; };
@@ -69,6 +80,7 @@
 		CB56D1E2284BDCE40023D76F /* EmojiGridSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiGridSectionView.swift; sourceTree = "<group>"; };
 		CB56D1E6284BDE0C0023D76F /* EmojisSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisSectionHeader.swift; sourceTree = "<group>"; };
 		CB56D1E8284BE4FC0023D76F /* Emojazi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Emojazi.entitlements; sourceTree = "<group>"; };
+		CB9EF7C62E40C0BF00AE7A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB3C3EFA2E368FC000EEFB13 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CB3C3EFB2E368FC700EEFB13 /* EmojiViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CB3D3CA8278ECBF10048FCD4 = {
 			isa = PBXGroup;
 			children = (
@@ -119,8 +139,10 @@
 		CB3D3CB3278ECBF10048FCD4 /* Emojazi */ = {
 			isa = PBXGroup;
 			children = (
+				CB9EF7C62E40C0BF00AE7A54 /* Info.plist */,
 				CB56D1E8284BE4FC0023D76F /* Emojazi.entitlements */,
 				CB3D3CB4278ECBF10048FCD4 /* EmojaziApp.swift */,
+				CB3C3EFA2E368FC000EEFB13 /* ViewModels */,
 				CB56D1D0284BB01A0023D76F /* Views */,
 				CB3D3CE5278EF2650048FCD4 /* Helpers */,
 				CB3D3CE1278EEF960048FCD4 /* Models */,
@@ -170,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				CB3D3CE3278EEFB00048FCD4 /* Emoji.swift */,
+				CB3C3EFD2E369CE600EEFB13 /* EmojiNet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				CB3D3CE6278EF2710048FCD4 /* JSONDecoder.swift */,
+				CB3C3F002E36B0D500EEFB13 /* ImageExtension.swift */,
+				CB52A5372E40B1F6000F0D49 /* DeviceExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -268,7 +293,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					CB3D3CB0278ECBF10048FCD4 = {
 						CreatedOnToolsVersion = 13.1;
@@ -336,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB3D3CE7278EF2710048FCD4 /* JSONDecoder.swift in Sources */,
+				CB3C3EFC2E368FC700EEFB13 /* EmojiViewModel.swift in Sources */,
 				CB56D1DF284BD7430023D76F /* EmojisGridView.swift in Sources */,
 				CB56D1D8284BB87A0023D76F /* EmojaziWelcomeView.swift in Sources */,
 				CB56D1D2284BB0370023D76F /* EmojisListView.swift in Sources */,
@@ -346,6 +372,9 @@
 				CB3D3CB5278ECBF10048FCD4 /* EmojaziApp.swift in Sources */,
 				CB56D1D6284BB0DA0023D76F /* EmojiPreview.swift in Sources */,
 				CB56D1DD284BD6960023D76F /* EmojisHomeView.swift in Sources */,
+				CB3C3EFE2E369CE600EEFB13 /* EmojiNet.swift in Sources */,
+				CB52A5382E40B1F6000F0D49 /* DeviceExtension.swift in Sources */,
+				CB3C3F022E36B0D500EEFB13 /* ImageExtension.swift in Sources */,
 				CB56D1DB284BB8D30023D76F /* EmojaziLocalKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,8 +383,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3C3EFF2E369CE600EEFB13 /* EmojiNet.swift in Sources */,
 				CB3D3CEA278F00670048FCD4 /* Emoji.swift in Sources */,
 				CB3D3CE8278EFC020048FCD4 /* JSONDecoder.swift in Sources */,
+				CB52A5392E40B1F6000F0D49 /* DeviceExtension.swift in Sources */,
+				CB3C3F012E36B0D500EEFB13 /* ImageExtension.swift in Sources */,
 				CB3D3CC6278ECBF30048FCD4 /* EmojaziTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -420,8 +453,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -441,6 +476,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -450,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -481,8 +518,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -495,6 +534,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -511,9 +551,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Emojazi/Preview Content\"";
-				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Emojazi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Emojazi;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -521,14 +565,17 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cedricbahirwe.Emojazi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,9 +592,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Emojazi/Preview Content\"";
-				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Emojazi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Emojazi;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -555,14 +606,17 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cedricbahirwe.Emojazi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -572,11 +626,9 @@
 		CB3D3CD9278ECBF30048FCD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -597,11 +649,9 @@
 		CB3D3CDA278ECBF30048FCD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -622,10 +672,8 @@
 		CB3D3CDC278ECBF30048FCD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -645,10 +693,8 @@
 		CB3D3CDD278ECBF30048FCD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
