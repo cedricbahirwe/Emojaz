@@ -28,7 +28,6 @@ struct EmojiGridSectionView: View {
                 }) {
                     Text(emoji.char)
                         .font(.system(size: UIDevice.isPad ? 150 : 75))
-                        .font(.system(.largeTitle))
                         .padding()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .aspectRatio(1, contentMode: .fill)
