@@ -19,8 +19,7 @@ struct EmojisSectionHeader: View {
 
     var body: some View {
         Text(title.capitalized)
-            .font(.system(.title, design: .rounded, weight: .semibold))
-            .fontWeight(.semibold)
+            .font(.system(.title, design: .monospaced, weight: .semibold))
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(isInGrid ? Color(.quaternarySystemFill) : .clear)

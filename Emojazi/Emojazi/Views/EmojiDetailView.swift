@@ -95,8 +95,7 @@ struct EmojiDetailView: View {
             )
             .overlay(
                 Text("U+\(emoji.codes)")
-                    .font(.system(isPad ? .title : .body, design: .monospaced))
-                    .fontWeight(.semibold)
+                    .font(.system(isPad ? .title : .body, design: .monospaced, weight: .semibold))
                     .foregroundStyle(dominantColor)
                     .saturation(6)
                     .padding(isPad ? 16 : 12)

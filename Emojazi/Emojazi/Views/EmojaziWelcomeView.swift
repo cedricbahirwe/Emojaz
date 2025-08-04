@@ -15,12 +15,10 @@ struct EmojaziWelcomeView: View {
     var body: some View {
         VStack {
             Text("Welcome to \(Text("**Emojazi**").foregroundStyle(.tint)) ")
-                .font(.system(isPad ? .largeTitle : .title2, design: .rounded))
-                .fontWeight(.medium)
+                .font(.system(isPad ? .largeTitle : .title2, design: .rounded, weight: .medium))
 
             Text("Your emoji(s) reference app")
-                .font(.system(isPad ? .title2 : .headline, design: .rounded))
-                .fontWeight(.light)
+                .font(.system(isPad ? .title2 : .headline, design: .rounded, weight: .light))
 
             VStack(alignment: .leading, spacing: 5) {
                 Text("What is a emoji?")
