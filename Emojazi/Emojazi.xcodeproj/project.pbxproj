@@ -80,6 +80,7 @@
 		CB56D1E2284BDCE40023D76F /* EmojiGridSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiGridSectionView.swift; sourceTree = "<group>"; };
 		CB56D1E6284BDE0C0023D76F /* EmojisSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisSectionHeader.swift; sourceTree = "<group>"; };
 		CB56D1E8284BE4FC0023D76F /* Emojazi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Emojazi.entitlements; sourceTree = "<group>"; };
+		CB9EF7C62E40C0BF00AE7A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +139,7 @@
 		CB3D3CB3278ECBF10048FCD4 /* Emojazi */ = {
 			isa = PBXGroup;
 			children = (
+				CB9EF7C62E40C0BF00AE7A54 /* Info.plist */,
 				CB56D1E8284BE4FC0023D76F /* Emojazi.entitlements */,
 				CB3D3CB4278ECBF10048FCD4 /* EmojaziApp.swift */,
 				CB3C3EFA2E368FC000EEFB13 /* ViewModels */,
@@ -553,7 +555,9 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Emojazi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Emojazi;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -592,7 +596,9 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Emojazi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Emojazi;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
